@@ -1,4 +1,5 @@
 ﻿using Context;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,36 +12,53 @@ namespace Repositorio
     {
         private readonly ApplicationDbContext _context;
 
-        public UserRepository(ApplicationDbContext context)
+        public RepositorioUsuario(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        public void Add(User nuevoUsuario)
+        public IEnumerable<Usuario> GetUsuarios()
         {
-            try
+            var cutoffDate = DateTime.Now.AddYears(-21);
+
+            var query = _context.usuarios
+                .Where(u => u.FechaNacimiento < cutoffDate)
+                .OrderByDescending(u => u.Nombre)
+                .Select(u => new Usuario
+                {
+                    Nombre = u.Nombre,
+                    Telefono = u.Telefono,
+                    FechaNacimiento = u.FechaNacimiento
+                })
+                .Take(10);
+
+            return query.ToList();
+        }
+
+
+        public async Task<Usuario> GetUsuario(string nombreUsuario)
+        {
+            var resultado = _context.usuarios.FirstOrDefault(m => m.Nombre == nombreUsuario);
+            return resultado;
+
+        }
+
+        public async Task<Usuario> PostUsuario(Usuario usuario)
+        {
+            Usuario existeUsuario = _context.usuarios.FirstOrDefault(m => m.id == usuario.id);
+            Usuario listaUsuario = new Usuario();
+            if (existeUsuario == null)
             {
-                _context.Users.Add(nuevoUsuario);
+                listaUsuario.Id = Guid.NewGuid().ToString();
+                listaUsuario.Nombre = usuario.Nombre;
+                listaUsuario.Telefono = usuario.Telefono;
+                listaUsuario.FechaNacimiento = usuario.FechaNacimiento;
+
+                _context.Add(listaUsuario);
                 _context.SaveChanges();
             }
-            catch (Exception ex)
-            {
-                // Manejar la excepción según tus necesidades
-                throw new Exception("Error al agregar un usuario.", ex);
-            }
+            return usuario;
         }
 
-        public IEnumerable<user> GetUsers()
-        {
-            return _context.Users.ToList();
-        }
-
-        public user GetUserById(string id)
-        {
-            return _context.Users.FirstOrDefault(u => u.Id == id);
-        }
-
-        // Otros métodos de repositorio según tus necesidades
     }
-}
 }
