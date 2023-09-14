@@ -18,7 +18,7 @@ namespace Examen.Controllers
 
         [HttpGet]
         [Route("usuarios")]
-        public async Task<ActionResult<List<Usuario>>> GetUsuarios()
+        public async Task<ActionResult<List<UsuarioVerDto>>> GetUsuarios()
         {
             var listaUsuarios = repositorioUsuarios.GetUsuarios();
 
@@ -29,7 +29,7 @@ namespace Examen.Controllers
 
         [HttpPost]
         [Route("registro")]
-        public async Task<IActionResult> PostUsuarios([FromBody] Usuario nuevoUsuario)
+        public async Task<IActionResult> PostUsuarios([FromBody] UsuarioAltaDto nuevoUsuario)
         {
             var userExists = await repositorioUsuarios.GetUsuario(nuevoUsuario.Nombre);
 

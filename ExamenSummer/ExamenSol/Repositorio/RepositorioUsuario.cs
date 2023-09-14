@@ -17,22 +17,21 @@ namespace Repositorio
             _context = context;
         }
 
-        public IEnumerable<Usuario> GetUsuarios()
+        public IEnumerable<UsuarioVerDto> GetUsuarios()
         {
             var cutoffDate = DateTime.Now.AddYears(-21);
 
             var query = _context.usuarios
                 .Where(u => u.FechaNacimiento < cutoffDate)
                 .OrderByDescending(u => u.Nombre)
-                .Select(u => new Usuario
+                .Select(u => new UsuarioVerDto
                 {
                     Nombre = u.Nombre,
                     Telefono = u.Telefono,
                     FechaNacimiento = u.FechaNacimiento
-                })
-                .Take(10);
+                });
 
-            return query.ToList();
+            return query.Take(10);
         }
 
 

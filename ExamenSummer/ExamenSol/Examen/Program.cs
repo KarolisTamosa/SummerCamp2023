@@ -25,6 +25,8 @@ namespace Examen
 
             var app = builder.Build();
 
+            app.UseCors("AllowAll");
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
@@ -36,6 +38,12 @@ namespace Examen
 
             app.UseAuthorization();
 
+            app.UseRouting();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
 
             app.MapControllers();
 
