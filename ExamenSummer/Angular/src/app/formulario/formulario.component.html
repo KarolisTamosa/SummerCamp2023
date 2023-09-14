@@ -1,0 +1,18 @@
+<div class="mb-10 text-xl font-semibold text-center">
+  <p>Registro de usuarios</p>
+</div>
+<form (submit)="onSubmit($event)">
+  <div class="mb-3">
+    <label class="mr-24 text-lg font-medium" for="nombre">Nombre::</label>
+    <input class="justify-end px-2 py-1 border border-black rounded-md" type="text" id="nombre" placeholder="Escriba su nombre" [(ngModel)]="nuevoUsuario.nombre" name="nombre" required>
+  </div>
+  <div class="mb-3">
+    <label class="mr-24 text-lg font-medium" for="telefono">Teléfono:</label>
+    <input class="px-2 py-1 border border-black rounded-md" type="text" id="telefono" placeholder="Escriba su teléfono" [(ngModel)]="nuevoUsuario.telefono" name="telefono" required>
+  </div>
+  <div class="mb-10">
+    <label class="text-lg font-medium mr-9" for="fechaNacimiento">Fecha de Nacimiento:</label>
+    <input class="py-1 mx-5 border border-black rounded-md" type="date" id="fechaNacimiento" [(ngModel)]="nuevoUsuario.fechaNacimiento" name="fechaNacimiento" required>
+  </div>
+  <button class="flex px-3 py-2 mx-auto bg-white border border-black rounded-lg hover:bg-gray-500" type="submit">Registrar Usuario</button>
+</form>
