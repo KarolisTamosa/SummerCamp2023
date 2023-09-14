@@ -16,7 +16,7 @@ namespace Examen
                 options.UseSqlServer(builder.Configuration["ConnectionStrings:ConexionDatos"]);
             });
 
-            // builder.Services.AddTransient<IRepositorioUsuario, RepositorioUsuario>();
+            builder.Services.AddTransient<IRepositorioUsuario, RepositorioUsuario>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -45,7 +45,7 @@ namespace Repositorio
 
         public async Task<Usuario> PostUsuario(Usuario usuario)
         {
-            Usuario existeUsuario = _context.usuarios.FirstOrDefault(m => m.id == usuario.id);
+            Usuario existeUsuario = _context.usuarios.FirstOrDefault(m => m.Id == usuario.Id);
             Usuario listaUsuario = new Usuario();
             if (existeUsuario == null)
             {
