@@ -11,6 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositorio", "Repositorio\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Context", "Context\Context.csproj", "{110182DC-EDB1-4B27-98F5-CF3E66B2FE87}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persistence", "Persistence", "{2E67DA53-3085-4A1F-B089-4978C9892B30}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{681D768A-E65D-4145-81FA-AB507BE8CEE4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{1B483634-458F-46CB-9724-272C2F5CB3F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +42,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A282FE96-C764-474A-88C7-97BD8EF7567A} = {681D768A-E65D-4145-81FA-AB507BE8CEE4}
+		{3A5A9E29-A963-4A77-8BFE-794C935EAFCC} = {1B483634-458F-46CB-9724-272C2F5CB3F4}
+		{1144D2B8-1970-4D39-A2B4-E566DE99254F} = {1B483634-458F-46CB-9724-272C2F5CB3F4}
+		{110182DC-EDB1-4B27-98F5-CF3E66B2FE87} = {2E67DA53-3085-4A1F-B089-4978C9892B30}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6CD2BD5E-FF33-4894-B7E2-773DD0F4E64D}
